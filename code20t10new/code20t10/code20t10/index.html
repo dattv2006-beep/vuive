@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Chúc mừng sinhnhat</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fffafa, #ffe6f2);
+            overflow: hidden;
+            font-family: "Mali", cursive;
+            height: 100vh;
+            position: relative;
+            touch-action: pan-y;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.9));
+            padding: 40px 50px;
+            border-radius: 30px;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #c2185b;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(216, 27, 96, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            max-width: 90%;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .slide-content strong {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d81b60, #f06292, #d81b60);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .slide-image {
+            max-width: 80%;
+            max-height: 50vh;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid #d81b60;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background-color: #d81b60;
+            transform: scale(1.2);
+        }
+
+        .swipe-indicator {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d81b60;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .center-gif {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 120px;
+            max-width: 30vw;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* ------------------------------
+        Responsive cho màn hình nhỏ
+        ---------------------------------- */
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 20px 15px;
+                font-size: 1.1rem;
+                border-radius: 20px;
+            }
+
+            .slide-content strong {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+
+            .slide-image {
+                max-width: 90%;
+            }
+
+            .swipe-indicator {
+                font-size: 0.9rem;
+                bottom: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="player" src="./assets/a.mp3"></audio>
+    
+    <div class="swiper-container">
+        <!-- Slide 1 - Lời chúc đầu tiên -->
+        <div class="slide active">
+            <div class="slide-content">
+                <strong>Happy biethday!</strong>
+                chúc cậu luôn vui vẻ, miệng luôn mỉm cười, lòng luôn an nhiên, đời luôn hạnh phúc.
+            </div>
+            <img src="./assets/a1.jpg" alt="Lời chúc" class="slide-image">
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="slide">
+            <div class="slide-content">
+                <strong>Happy biethday!</strong>
+                Chúc cậu xinh đẹp và ngập tràn yêu thương!
+            </div>
+            <img src="./assets/a2.jpg" alt="Lời chúc" class="slide-image">
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="slide">
+            <div class="slide-content">
+                <strong>Happy biethday!</strong>
+                Tớ luôn ở đây và sẵn sàng lắng nghe những tâm sư của cậu.
+            </div>
+            <img src="./assets/a3.jpg" alt="Lời chúc" class="slide-image">
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="slide">
+            <div class="slide-content">
+                <strong>Happy biethday!</strong>
+                Cảm ơn bạn vì đã luôn mạnh mẽ và tuyệt vời như thế!
+            </div>
+            <img src="./assets/a4.jpg" alt="Lời chúc" class="slide-image">
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="slide">
+            <div class="slide-content">
+                <strong>Happy biethday!</strong>
+                gặp chuyện không thuận lợi, cũng nên chừa phần của tớ nữa "nhớ nha" 
+            </div>
+            <img src="./assets/a5.jpg" alt="Lời chúc" class="slide-image">
+        </div>
+        
+        <!-- Slide 6 -->
+        <div class="slide">
+            <div class="slide-content">
+                <strong>Chúc mừng 20-10</strong>
+                Bạn là món quà tuyệt vời nhất mà cuộc sống mang lại!
+            </div>
+            <img src="./assets/a6.jpg" alt="Lời chúc" class="slide-image">
+        </div>
+    </div>
+
+    <!-- Ảnh động trang trí -->
+    <img src="./assets/mewmew.gif" alt="GIF" class="center-gif" />
+
+    <!-- Chỉ dẫn vuốt -->
+    <div class="swipe-indicator">Vuốt sang trái/phải để xem thêm lời chúc</div>
+
+    <!-- Điều hướng -->
+    <div class="navigation">
+        <div class="nav-dot active" data-index="0"></div>
+        <div class="nav-dot" data-index="1"></div>
+        <div class="nav-dot" data-index="2"></div>
+        <div class="nav-dot" data-index="3"></div>
+        <div class="nav-dot" data-index="4"></div>
+        <div class="nav-dot" data-index="5"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let startX = 0;
+            let endX = 0;
+            
+            // Phát nhạc khi trang được tải
+            document.body.addEventListener("click", function () {
+                const player = document.getElementById("player");
+                if (player.paused) {
+                    player.play();
+                }
+            });
+            
+            // Cập nhật slide hiện tại
+            function updateSlide(index) {
+                // Ẩn tất cả slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Hiển thị slide hiện tại
+                slides[index].classList.add('active');
+                
+                // Cập nhật dots điều hướng
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                dots[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+            
+            // Xử lý sự kiện vuốt trên màn hình cảm ứng
+            document.querySelector('.swiper-container').addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+            });
+            
+            document.querySelector('.swiper-container').addEventListener('touchmove', function(e) {
+                endX = e.touches[0].clientX;
+            });
+            
+            document.querySelector('.swiper-container').addEventListener('touchend', function() {
+                const diffX = startX - endX;
+                const minSwipeDistance = 50; // Khoảng cách vuốt tối thiểu
+                
+                // Vuốt sang trái - chuyển đến slide tiếp theo
+                if (diffX > minSwipeDistance && currentSlide < totalSlides - 1) {
+                    updateSlide(currentSlide + 1);
+                }
+                // Vuốt sang phải - chuyển đến slide trước đó
+                else if (diffX < -minSwipeDistance && currentSlide > 0) {
+                    updateSlide(currentSlide - 1);
+                }
+            });
+            
+            // Xử lý sự kiện click cho dots điều hướng
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    updateSlide(index);
+                });
+            });
+            
+            // Xử lý sự kiện bàn phím (tùy chọn)
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                    updateSlide(currentSlide - 1);
+                } else if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                    updateSlide(currentSlide + 1);
+                }
+            });
+            
+            // Ẩn chỉ dẫn vuốt sau 5 giây
+            setTimeout(function() {
+                document.querySelector('.swipe-indicator').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.swipe-indicator').style.display = 'none';
+                }, 1000);
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+
+
